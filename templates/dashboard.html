@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Reported Issues for Ward {{ session.ward }}</h2>
+
+<div class="list-container">
+  {% if issues %}
+    {% for issue in issues %}
+      {% include 'components/issue_card.html' with context %}
+    {% endfor %}
+  {% else %}
+    <p>No issues found for your ward.</p>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

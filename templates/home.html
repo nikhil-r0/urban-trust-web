@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Welcome to Urban Trust</h1>
+
+    <!-- Dropdown for issue category selection -->
+<div style="margin-bottom: 2rem;">
+    <label for="categoryDropdown"><strong>Select Issue Category:</strong></label>
+    <select id="categoryDropdown" onchange="navigateToCategory()">
+        <option disabled selected>Choose a category</option>
+        <option value="garbage">Garbage</option>
+        <option value="pothole">Potholes</option>
+        <option value="sewage">Sewage</option>
+        <option value="electricity">Electricity</option>
+        <option value="water">Water</option>
+        <!-- Add more categories as needed -->
+    </select>
+</div>
+</div>
+
+
+<!-- Script to handle dropdown navigation -->
+<script>
+    function navigateToCategory() {
+        const category = document.getElementById("categoryDropdown").value;
+        if (category) {
+            window.location.href = `/map/${category}`;
+        }
+    }
+</script>
+{% endblock %}

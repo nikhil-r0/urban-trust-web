@@ -1,0 +1,33 @@
+<div class="list-item">
+  <div class="item-text">
+    <strong>Category:</strong> {{ issue.category }}<br>
+    <strong>Description:</strong> {{ issue.description }}<br>
+    <strong>Status:</strong> {{ issue.status }}<br>
+    <strong>Location:</strong> ({{ issue.latitude }}, {{ issue.longitude }})<br>
+    <strong>Map Link:</strong> 
+    <a href="https://www.google.com/maps/place/{{ issue.latitude }},{{ issue.longitude }}" target="_blank">
+      View on Google Maps
+    </a><br>
+        <strong>Created At:</strong> {{ issue.created_at[:16].replace('T', ' ') }}<br>
+
+    {% if issue.image %}
+      <div style="text-align: center; margin-top: 10px;">
+        <img src="data:image/jpeg;base64,{{ issue.image }}"
+             alt="Issue Image"
+             style="max-width: 50%; border-radius: 8px;" />
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-completed" onclick="updateStatus('{{ issue.id }}', 'completed')">
+      <i class="fas fa-check-circle"></i> Completed
+    </button>
+    <button class="btn btn-underprocess" onclick="updateStatus('{{ issue.id }}', 'under_process')">
+      <i class="fas fa-sync-alt"></i> Under Process
+    </button>
+    <button class="btn btn-notworking" onclick="updateStatus('{{ issue.id }}', 'not_working')">
+      <i class="fas fa-times-circle"></i> Not Working
+    </button>
+  </div>
+</div>
